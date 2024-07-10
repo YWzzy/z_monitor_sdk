@@ -130,6 +130,7 @@ export interface ReportData
     device: string; // 设备种类描述
     device_type: string; // 设备种类，如pc
   };
+  // clientIP?: string; // 客户端IP
 }
 
 export interface Callback {

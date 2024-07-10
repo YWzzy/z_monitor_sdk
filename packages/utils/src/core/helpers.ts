@@ -1,6 +1,29 @@
 import { variableTypeDetection } from './verifyType';
 import { Callback, IAnyObject } from '@zmonitor/types';
 
+export async function getClientIP(): Promise<string> {
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data.ip;
+  } catch (error) {
+    console.error('Error fetching client IP:', error);
+    return 'unknown';
+  }
+}
+
+export function getExtendedDeviceInfo(deviceInfo: any): any {
+  // 在这里扩展设备信息，例如添加更多的硬件信息
+  return {
+    ...deviceInfo,
+    // 假设我们添加了更多的信息
+    // extendedInfo: 'some additional device info',
+  };
+}
+
 export function getLocationHref(): string {
   if (typeof document === 'undefined' || document.location == null) return '';
   return document.location.href;

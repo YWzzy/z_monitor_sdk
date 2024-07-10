@@ -15,11 +15,11 @@ import recordscreen from '../../packages/recordscreen/src';
 
 Vue.use(ZMonitor, {
   dsn: 'http://localhost:8080/reportData',
-  appId: '6538865438263703',
+  appId: '8749155290628577',
   silentWhiteScreen: false,
   skeletonProject: true,
   repeatCodeError: true,
-  userId: '43527840-fc18-4d52-a12c-e369a694de87',
+  userId: '897a4042-870f-4a41-8de2-cc85b39fabaf',
   handleHttpStatus(data) {
     function safeStringify(response) {
       try {

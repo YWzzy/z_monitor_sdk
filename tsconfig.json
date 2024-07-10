@@ -1,10 +1,10 @@
 {
   "include": ["global.d.ts", "packages", "types", "test"],
   "compilerOptions": {
-    "resolveJsonModule": true,
+    "resolveJsonModule": false,
     "target": "es5",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "esnext","es5", "es6"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
