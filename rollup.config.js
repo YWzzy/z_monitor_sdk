@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -7,12 +6,22 @@ import { uglify } from 'rollup-plugin-uglify';
 import dts from 'rollup-plugin-dts';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+// 获取当前模块的文件路径
+const __filename = fileURLToPath(import.meta.url);
+// 获取当前模块的目录路径
+const __dirname = path.dirname(__filename);
+
+// 读取packages目录中的所有文件和子目录
 const packagesDir = path.resolve(__dirname, 'packages');
 const packageFiles = fs.readdirSync(packagesDir);
 function output(path) {
   return [
     {
+      // 每个包的入口文件是./packages/${path}/src/index.ts
       input: [`./packages/${path}/src/index.ts`],
+      // 生成多种格式的输出文件
       output: [
         {
           file: `./packages/${path}/dist/index.cjs.js`,
@@ -38,6 +47,7 @@ function output(path) {
           plugins: [uglify()],
         },
       ],
+      // 用于处理TypeScript、解析模块、处理CommonJS模块和导入JSON文件
       plugins: [
         typescript({
           tsconfigOverride: {
