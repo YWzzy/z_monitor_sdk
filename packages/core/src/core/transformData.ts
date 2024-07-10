@@ -3,6 +3,14 @@ import { fromHttpStatus, interceptStr, getTimestamp } from '@zmonitor/utils';
 import { HTTP_CODE, STATUS_CODE } from '@zmonitor/common';
 import { HttpData, ResouceError, ResourceTarget } from '@zmonitor/types';
 
+function safeStringify(response: any): string {
+  try {
+    return JSON.stringify(response);
+  } catch (e) {
+    return '无法序列化的响应';
+  }
+}
+
 // 处理接口的状态
 export function httpTransform(data: HttpData): HttpData {
   let message: any = '';
@@ -22,7 +30,7 @@ export function httpTransform(data: HttpData): HttpData {
       } else {
         status = STATUS_CODE.ERROR;
         message = `接口报错，报错信息为：${
-          typeof response == 'object' ? JSON.stringify(response) : response
+          response && typeof response == 'object' ? safeStringify(response) : String(response)
         }`;
       }
     }

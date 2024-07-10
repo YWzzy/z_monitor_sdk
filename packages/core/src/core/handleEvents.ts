@@ -20,21 +20,29 @@ import { ErrorTarget, RouteHistory, HttpData } from '@zmonitor/types';
 const HandleEvents = {
   // 处理xhr、fetch回调
   handleHttp(data: HttpData, type: EVENTTYPES): void {
-    const result = httpTransform(data);
-    // 添加用户行为，去掉自身上报的接口行为
-    if (!data.url.includes(options.dsn)) {
-      breadcrumb.push({
-        type,
-        category: breadcrumb.getCategory(type),
-        data: result,
-        status: result.status,
-        time: data.time,
-      });
-    }
+    try {
+      const result = httpTransform(data);
+      // 添加用户行为，去掉自身上报的接口行为
+      if (!data.url.includes(options.dsn)) {
+        breadcrumb.push({
+          type,
+          category: breadcrumb.getCategory(type),
+          data: result,
+          status: result.status,
+          time: data.time,
+        });
+      }
 
-    if (result.status === 'error') {
-      // 上报接口错误
-      transportData.send({ ...result, type, status: STATUS_CODE.ERROR });
+      if (result.status === 'error') {
+        // 上报接口错误
+        transportData.send({ ...result, type, status: STATUS_CODE.ERROR });
+      }
+      else if(result.status === 'ok'){
+        // 上报接口成功
+        transportData.send({ ...result, type, status: STATUS_CODE.OK });
+      }
+    } catch (err) {
+      console.error('handleHttp error', err);
     }
   },
 

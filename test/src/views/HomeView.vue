@@ -8,6 +8,7 @@
     <el-row>
       <el-button type="info" @click="xhrError">xhr请求报错</el-button>
       <el-button type="warning" @click="fetchError">fetch请求报错</el-button>
+      <el-button type="success" @click="fetchSuccess">fetch请求成功</el-button>
     </el-row>
     <el-row>
       <el-button type="danger" @click="resourceError">加载资源报错</el-button>
@@ -22,7 +23,7 @@
           <span>{{ scope.row.time ? format(scope.row.time) : scope.row.date }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="apikey" label="项目编号"> </el-table-column>
+      <el-table-column prop="appId" label="项目编号"> </el-table-column>
       <el-table-column prop="userId" label="用户id"> </el-table-column>
       <el-table-column prop="sdkVersion" label="SDK版本"> </el-table-column>
       <el-table-column prop="deviceInfo" label="浏览器信息">
@@ -111,12 +112,20 @@ export default {
   methods: {
     getTableData() {
       setTimeout(() => {
-        fetch(`http://localhost:8083/getErrorList`)
-          .then(response => response.json())
-          .then(res => {
-            this.tableData = res.data;
-          });
+        // fetch(`http://localhost:8083/getErrorList`)
+        //   .then(response => response.json())
+        //   .then(res => {
+        //     this.tableData = res.data;
+        //   });
       }, 500);
+    },
+    fetchSuccess() {
+      fetch('https://jsonplaceholder.typicode.com/', {
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+      });
     },
     fetchError() {
       fetch('https://jsonplaceholder.typicode.com/posts/a', {

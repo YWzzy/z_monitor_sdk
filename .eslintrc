@@ -8,12 +8,18 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error",
+     "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "lf"
+        }
+      ]
+    },
     "no-useless-escape": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-function": "off"
-  }
 }
+
