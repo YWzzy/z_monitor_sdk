@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:YWzzy/zmonitor.git"
+    "url": "git@github.com:YWzzy/z_monitor_sdk.git"
   },
   "dependencies": {
     "@types/pako": "^2.0.0",

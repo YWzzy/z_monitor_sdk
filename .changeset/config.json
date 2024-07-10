@@ -1,6 +1,6 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "$schema": "https://unpkg.com/@changesets/config/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "https://github.com/YWzzy/z_monitor_sdk" }],
   "commit": false,
   "fixed": [],
   "linked": [],
@@ -9,3 +9,4 @@
   "updateInternalDependencies": "patch",
   "ignore": []
 }
+
