@@ -36,8 +36,7 @@ const HandleEvents = {
       if (result.status === 'error') {
         // 上报接口错误
         transportData.send({ ...result, type, status: STATUS_CODE.ERROR });
-      }
-      else if(result.status === 'ok'){
+      } else if (result.status === 'ok') {
         // 上报接口成功
         transportData.send({ ...result, type, status: STATUS_CODE.OK });
       }

@@ -9,10 +9,6 @@ import ZMonitor from '../../packages/core/src';
 import performance from '../../packages/performance/src';
 import recordscreen from '../../packages/recordscreen/src';
 
-// import zMonitor from '@zmonitor/core';
-// import performance from '@zmonitor/performance';
-// import recordscreen from '@zmonitor/recordscreen';
-
 Vue.use(ZMonitor, {
   dsn: 'http://localhost:8080/reportData',
   appId: '8749155290628577',

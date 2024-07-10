@@ -1,74 +1,140 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@changesets/cli': ^2.26.1
-  '@commitlint/cli': ^17.3.0
-  '@commitlint/config-conventional': ^17.3.0
-  '@nestjs/mapped-types': '*'
-  '@rollup/plugin-commonjs': ^23.0.3
-  '@rollup/plugin-json': ^5.0.2
-  '@rollup/plugin-node-resolve': ^15.0.1
-  '@types/ua-parser-js': ^0.7.39
-  '@typescript-eslint/eslint-plugin': ^5.46.1
-  '@typescript-eslint/parser': ^5.46.1
-  '@zmonitor/common': 1.0.0
-  '@zmonitor/types': 1.0.0
-  '@zmonitor/utils': 1.0.0
-  commitizen: ^4.2.6
-  core-js: ^3.19.1
-  cz-conventional-changelog: ^3.3.0
-  error-stack-parser: ^2.1.4
-  eslint: ^8.29.0
-  eslint-plugin-prettier: ^4.2.1
-  husky: ^8.0.2
-  lint-staged: ^13.1.0
-  path-to-regexp: ^6.2.0
-  prettier: ^2.8.0
-  rollup: ^2.78.0
-  rollup-plugin-dts: ^5.0.0
-  rollup-plugin-typescript2: ^0.34.1
-  rollup-plugin-uglify: ^6.0.4
-  ts-loader: ^9.4.2
-  tslib: ^2.4.1
-  typescript: ^4.9.4
-  ua-parser-js: ^1.0.32
-  web-vitals: ^3.1.0
+importers:
 
-dependencies:
-  '@changesets/cli': 2.27.7
-  '@nestjs/mapped-types': 2.0.5
-  '@zmonitor/common': 1.0.0
-  '@zmonitor/types': 1.0.0
-  '@zmonitor/utils': 1.0.0
-  core-js: 3.37.1
-  error-stack-parser: 2.1.4
-  path-to-regexp: 6.2.2
-  tslib: 2.6.3
-  ua-parser-js: 1.0.38
-  web-vitals: 3.5.2
+  .:
+    specifiers:
+      '@changesets/cli': ^2.27.7
+      '@commitlint/cli': ^17.8.1
+      '@commitlint/config-conventional': ^17.8.1
+      '@nestjs/mapped-types': '*'
+      '@rollup/plugin-commonjs': ^23.0.7
+      '@rollup/plugin-json': ^5.0.2
+      '@rollup/plugin-node-resolve': ^15.2.3
+      '@types/pako': ^2.0.3
+      '@types/ua-parser-js': ^0.7.39
+      '@typescript-eslint/eslint-plugin': ^5.62.0
+      '@typescript-eslint/parser': ^5.62.0
+      commitizen: ^4.3.0
+      core-js: ^3.37.1
+      cz-conventional-changelog: ^3.3.0
+      error-stack-parser: 2.1.4
+      eslint: ^8.57.0
+      eslint-plugin-prettier: ^4.2.1
+      husky: ^8.0.3
+      js-base64: 3.7.3
+      lint-staged: ^13.3.0
+      pako: 2.1.0
+      path-to-regexp: ^6.2.2
+      prettier: ^2.8.8
+      rollup: ^2.79.1
+      rollup-plugin-dts: ^5.3.1
+      rollup-plugin-typescript2: ^0.34.1
+      rollup-plugin-uglify: ^6.0.4
+      rrweb: 1.1.3
+      ts-loader: ^9.5.1
+      tslib: ^2.6.3
+      typescript: ^4.9.5
+      ua-parser-js: ^1.0.38
+      web-vitals: ^3.5.2
+    dependencies:
+      '@changesets/cli': 2.27.7
+      '@nestjs/mapped-types': 2.0.5
+      core-js: 3.37.1
+      error-stack-parser: 2.1.4
+      js-base64: 3.7.3
+      pako: 2.1.0
+      path-to-regexp: 6.2.2
+      rrweb: 1.1.3
+      tslib: 2.6.3
+      ua-parser-js: 1.0.38
+      web-vitals: 3.5.2
+    devDependencies:
+      '@commitlint/cli': 17.8.1
+      '@commitlint/config-conventional': 17.8.1
+      '@rollup/plugin-commonjs': 23.0.7_rollup@2.79.1
+      '@rollup/plugin-json': 5.0.2_rollup@2.79.1
+      '@rollup/plugin-node-resolve': 15.2.3_rollup@2.79.1
+      '@types/pako': 2.0.3
+      '@types/ua-parser-js': 0.7.39
+      '@typescript-eslint/eslint-plugin': 5.62.0_gceg25gd4xew4ky25uvc7u6nti
+      '@typescript-eslint/parser': 5.62.0_4lxgoysztp3gakdxqfzw7vhg4u
+      commitizen: 4.3.0_typescript@4.9.5
+      cz-conventional-changelog: 3.3.0_typescript@4.9.5
+      eslint: 8.57.0
+      eslint-plugin-prettier: 4.2.1_chsicahov6fmmy7bexibd6t5fq
+      husky: 8.0.3
+      lint-staged: 13.3.0
+      prettier: 2.8.8
+      rollup: 2.79.1
+      rollup-plugin-dts: 5.3.1_zptcx3kz3uwp66hzhyyt545weq
+      rollup-plugin-typescript2: 0.34.1_zptcx3kz3uwp66hzhyyt545weq
+      rollup-plugin-uglify: 6.0.4_rollup@2.79.1
+      ts-loader: 9.5.1_typescript@4.9.5
+      typescript: 4.9.5
 
-devDependencies:
-  '@commitlint/cli': 17.8.1
-  '@commitlint/config-conventional': 17.8.1
-  '@rollup/plugin-commonjs': 23.0.7_rollup@2.79.1
-  '@rollup/plugin-json': 5.0.2_rollup@2.79.1
-  '@rollup/plugin-node-resolve': 15.2.3_rollup@2.79.1
-  '@types/ua-parser-js': 0.7.39
-  '@typescript-eslint/eslint-plugin': 5.62.0_gceg25gd4xew4ky25uvc7u6nti
-  '@typescript-eslint/parser': 5.62.0_4lxgoysztp3gakdxqfzw7vhg4u
-  commitizen: 4.3.0_typescript@4.9.5
-  cz-conventional-changelog: 3.3.0_typescript@4.9.5
-  eslint: 8.57.0
-  eslint-plugin-prettier: 4.2.1_chsicahov6fmmy7bexibd6t5fq
-  husky: 8.0.3
-  lint-staged: 13.3.0
-  prettier: 2.8.8
-  rollup: 2.79.1
-  rollup-plugin-dts: 5.3.1_zptcx3kz3uwp66hzhyyt545weq
-  rollup-plugin-typescript2: 0.34.1_zptcx3kz3uwp66hzhyyt545weq
-  rollup-plugin-uglify: 6.0.4_rollup@2.79.1
-  ts-loader: 9.5.1_typescript@4.9.5
-  typescript: 4.9.5
+  packages/common:
+    specifiers: {}
+
+  packages/core:
+    specifiers:
+      '@zmonitor/common': workspace:*
+      '@zmonitor/types': workspace:*
+      '@zmonitor/utils': workspace:*
+    dependencies:
+      '@zmonitor/common': link:../common
+      '@zmonitor/types': link:../types
+      '@zmonitor/utils': link:../utils
+
+  packages/performance:
+    specifiers:
+      '@zmonitor/common': workspace:*
+      '@zmonitor/types': workspace:*
+      '@zmonitor/utils': workspace:*
+      web-vitals: ^3.1.0
+    dependencies:
+      '@zmonitor/common': link:../common
+      '@zmonitor/types': link:../types
+      '@zmonitor/utils': link:../utils
+      web-vitals: 3.5.2
+
+  packages/recordscreen:
+    specifiers:
+      '@types/pako': ^2.0.0
+      '@zmonitor/common': workspace:*
+      '@zmonitor/types': workspace:*
+      '@zmonitor/utils': workspace:*
+      js-base64: 3.7.3
+      pako: 2.1.0
+      rrweb: 1.1.3
+    dependencies:
+      '@types/pako': 2.0.3
+      '@zmonitor/common': link:../common
+      '@zmonitor/types': link:../types
+      '@zmonitor/utils': link:../utils
+      js-base64: 3.7.3
+      pako: 2.1.0
+      rrweb: 1.1.3
+
+  packages/types:
+    specifiers:
+      '@zmonitor/common': workspace:*
+    dependencies:
+      '@zmonitor/common': link:../common
+
+  packages/utils:
+    specifiers:
+      '@types/ua-parser-js': ^0.7.36
+      '@zmonitor/common': workspace:*
+      '@zmonitor/core': workspace:*
+      '@zmonitor/types': workspace:*
+      ua-parser-js: 1.0.32
+    dependencies:
+      '@types/ua-parser-js': 0.7.39
+      '@zmonitor/common': link:../common
+      '@zmonitor/core': link:../core
+      '@zmonitor/types': link:../types
+      ua-parser-js: 1.0.32
 
 packages:
 
@@ -750,6 +816,10 @@ packages:
     dev: true
     optional: true
 
+  /@types/css-font-loading-module/0.0.7:
+    resolution: {integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==}
+    dev: false
+
   /@types/estree/1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
@@ -780,6 +850,9 @@ packages:
   /@types/normalize-package-data/2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
     dev: true
+
+  /@types/pako/2.0.3:
+    resolution: {integrity: sha512-bq0hMV9opAcrmE0Byyo0fY3Ew4tgOevJmQ9grUhpXQhYfyLJ1Kqg3P33JT5fdbT2AjeAjR51zqqVjAL/HMkx7Q==}
 
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -925,32 +998,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@zmonitor/common/1.0.0:
-    resolution: {integrity: sha512-jl6v9ik5Sv1cabPRFiz4LzoiHuY9qFHKCDkXhU4MTB3cY2k8YBsJI7bvUjFN1Nb7S+krfDGSmxuQI3WiLpR/Jg==}
-    dev: false
-
-  /@zmonitor/core/1.0.0:
-    resolution: {integrity: sha512-AU+jt/qE99YJXr9F8d/ur9rNVSbmqw8Uup4f5S7IrfDjt3iaUaz2KKO0oPfjRqF4LGigacjb/xAooabt5RsTsw==}
-    dependencies:
-      '@zmonitor/common': 1.0.0
-      '@zmonitor/types': 1.0.0
-      '@zmonitor/utils': 1.0.0
-    dev: false
-
-  /@zmonitor/types/1.0.0:
-    resolution: {integrity: sha512-evVb1v4xrPOc6n1/i/kY1FE8QTPyyEfFPjqAht/Tj8FOkzc5iIXQtNma4LS4Z2rI1OrofCc09CJ/wXUdagRu2A==}
-    dependencies:
-      '@zmonitor/common': 1.0.0
-    dev: false
-
-  /@zmonitor/utils/1.0.0:
-    resolution: {integrity: sha512-PUhkWj0hF3X3XJ+kNEI4lLdG9hJgTbMLKaBJKRATjYqo5wpeyKtoFFKB419XkIjTfWoPeBN49+xQOZRoYLH6aQ==}
-    dependencies:
-      '@types/ua-parser-js': 0.7.39
-      '@zmonitor/common': 1.0.0
-      '@zmonitor/core': 1.0.0
-      '@zmonitor/types': 1.0.0
-      ua-parser-js: 1.0.32
+  /@xstate/fsm/1.6.5:
+    resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
     dev: false
 
   /JSONStream/1.3.5:
@@ -1081,6 +1130,11 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /base64-arraybuffer/1.0.2:
+    resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -1824,6 +1878,10 @@ packages:
     dependencies:
       reusify: 1.0.4
 
+  /fflate/0.4.8:
+    resolution: {integrity: sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==}
+    dev: false
+
   /figures/3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -2354,6 +2412,10 @@ packages:
     dev: true
     optional: true
 
+  /js-base64/3.7.3:
+    resolution: {integrity: sha512-PAr6Xg2jvd7MCR6Ld9Jg3BmTcjYsHEBx1VlwEwULb/qowPf5VD9kEMagj23Gm7JRnSvE/Da/57nChZjnvL8v6A==}
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
@@ -2707,6 +2769,10 @@ packages:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
+  /mitt/1.2.0:
+    resolution: {integrity: sha512-r6lj77KlwqLhIUku9UWYes7KJtsczvolZkzp8hbaDPPaE24OmWl5s539Mytlj22siEQKosZ26qCBgda2PKwoJw==}
+    dev: false
+
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -2855,6 +2921,10 @@ packages:
   /p-try/2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
+
+  /pako/2.1.0:
+    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
+    dev: false
 
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -3151,6 +3221,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /rrweb-snapshot/1.1.14:
+    resolution: {integrity: sha512-eP5pirNjP5+GewQfcOQY4uBiDnpqxNRc65yKPW0eSoU1XamDfc4M8oqpXGMyUyvLyxFDB0q0+DChuxxiU2FXBQ==}
+    dev: false
+
+  /rrweb/1.1.3:
+    resolution: {integrity: sha512-F2qp8LteJLyycsv+lCVJqtVpery63L3U+/ogqMA0da8R7Jx57o6gT+HpjrzdeeGMIBZR7kKNaKyJwDupTTu5KA==}
+    dependencies:
+      '@types/css-font-loading-module': 0.0.7
+      '@xstate/fsm': 1.6.5
+      base64-arraybuffer: 1.0.2
+      fflate: 0.4.8
+      mitt: 1.2.0
+      rrweb-snapshot: 1.1.14
+    dev: false
 
   /run-async/2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
