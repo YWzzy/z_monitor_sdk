@@ -9,7 +9,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "publish": "changeset publish --registry=https://registry.npmjs.com/",
-    "release": "npm build && npm publish",
+    "release": "npm run build && npm publish",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "keywords": [
