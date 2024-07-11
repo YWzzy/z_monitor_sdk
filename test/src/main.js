@@ -5,9 +5,13 @@ import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import ZMonitor from '../../packages/core/src';
-import performance from '../../packages/performance/src';
-import recordscreen from '../../packages/recordscreen/src';
+// import ZMonitor from '../../packages/core/src';
+// import performance from '../../packages/performance/src';
+// import recordscreen from '../../packages/recordscreen/src';
+
+import ZMonitor from '@zmonitor/core';
+import performance from '@zmonitor/performance';
+import recordscreen from '@zmonitor/recordscreen';
 
 Vue.use(ZMonitor, {
   dsn: 'http://localhost:8080/reportData',
