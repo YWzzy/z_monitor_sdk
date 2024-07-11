@@ -128,10 +128,11 @@ export default {
       });
     },
     fetchError() {
-      fetch('https://jsonplaceholder.typicode.com/posts/a', {
+      fetch('https://jsonplaceholder.typicode.com/posts/a?id=12&startTime=2024.07.13', {
         method: 'POST',
-        header: {
+        headers: {
           'Content-Type': 'application/json;charset=UTF-8',
+          'Accept-Encoding': 'gzip, deflate, br, zstd',
         },
         body: { id: 1 },
       })

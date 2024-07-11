@@ -1,5 +1,5 @@
 import { options } from './options';
-import { fromHttpStatus, interceptStr, getTimestamp } from '@zmonitor/utils';
+import { fromHttpStatus, interceptStr, getTimestamp, parseUrlParams } from '@zmonitor/utils';
 import { HTTP_CODE, STATUS_CODE } from '@zmonitor/common';
 import { HttpData, ResouceError, ResourceTarget } from '@zmonitor/types';
 
@@ -15,6 +15,7 @@ function safeStringify(response: any): string {
 export function httpTransform(data: HttpData): HttpData {
   let message: any = '';
   const { elapsedTime, time, method = '', type, Status = 200, response, requestData } = data;
+  const params = parseUrlParams(data.url);
   let status: STATUS_CODE;
   if (Status === 0) {
     status = STATUS_CODE.ERROR;
@@ -47,8 +48,10 @@ export function httpTransform(data: HttpData): HttpData {
     message,
     requestData: {
       httpType: type as string,
+      headers: data && data.headers,
       method,
       data: requestData || '',
+      params: params,
     },
     response: {
       Status,

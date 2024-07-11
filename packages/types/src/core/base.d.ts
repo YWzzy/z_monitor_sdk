@@ -15,10 +15,13 @@ export interface HttpData {
   message: string;
   Status?: number;
   status?: string;
+  headers: any;
   requestData?: {
     httpType: string;
+    headers: any;
     method: string;
     data: any;
+    params?: { [key: string]: string };
   };
   response?: {
     Status: number;

@@ -119,6 +119,7 @@ function fetchReplace(): void {
         type: HTTPTYPE.FETCH,
         method,
         requestData: config && config.body,
+        headers: config && config.headers,
         url,
         response: '',
       };

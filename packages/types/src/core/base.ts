@@ -18,10 +18,13 @@ export interface HttpData {
   message: string; // 接口信息
   Status?: number; // 接口状态编码
   status?: string; // 接口状态
+  headers?: any;
   requestData?: {
     httpType: string; // 请求类型 xhr fetch
+    headers?: any;
     method: string; // 请求方式
     data: any;
+    params?: { [key: string]: string };
   };
   response?: {
     Status: number; // 接口状态

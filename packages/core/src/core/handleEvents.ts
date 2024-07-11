@@ -33,7 +33,6 @@ const HandleEvents = {
         });
       }
 
-      console.log('result.status', result.status);
       if (result.status === 'error') {
         // 上报接口错误
         transportData.send({ ...result, type, status: STATUS_CODE.ERROR });

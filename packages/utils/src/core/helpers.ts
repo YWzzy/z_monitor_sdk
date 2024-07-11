@@ -144,3 +144,27 @@ export function interceptStr(str: string, interceptLength: number): string {
   }
   return '';
 }
+
+// 解析url参数
+export function parseUrlParams(url: string): { [key: string]: string } {
+  // 定义一个对象来存储参数
+  const params: { [key: string]: string } = {};
+
+  // 检查传入的url是否为字符串
+  if (variableTypeDetection.isString(url)) {
+    // 获取查询字符串部分
+    const queryString = url.split('?')[1];
+    if (queryString) {
+      // 分割查询字符串
+      const pairs = queryString.split('&');
+      pairs.forEach(pair => {
+        // 分割键值对
+        const [key, value] = pair.split('=');
+        // 解码并存储在params对象中
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      });
+    }
+  }
+
+  return params;
+}
