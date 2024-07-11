@@ -1,5 +1,12 @@
 # @zmonitor/utils
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @zmonitor/core@3.0.0
+
 ## 2.0.0
 
 ### Major Changes

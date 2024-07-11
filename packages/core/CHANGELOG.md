@@ -1,5 +1,15 @@
 # @zmonitor/core
 
+## 3.0.0
+
+### Major Changes
+
+- 测试
+
+### Patch Changes
+
+- @zmonitor/utils@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
