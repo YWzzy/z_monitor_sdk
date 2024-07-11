@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 3.0.0
+
+### Major Changes
+
+- 请求捕获部分参数信息不全的问题修复
+
 ## 2.0.0
 
 ### Major Changes
