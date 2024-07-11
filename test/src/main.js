@@ -5,13 +5,18 @@ import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import ZMonitor from '../../packages/core/src';
-import performance from '../../packages/performance/src';
-import recordscreen from '../../packages/recordscreen/src';
-
-// import ZMonitor from '@zmonitor/core';
-// import performance from '@zmonitor/performance';
-// import recordscreen from '@zmonitor/recordscreen';
+// 根据环境变量引入不同路径的 ZMonitor 模块
+let ZMonitor, performance, recordscreen;
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'local') {
+  ZMonitor = require('../../packages/core/src').default;
+  performance = require('../../packages/performance/src').default;
+  recordscreen = require('../../packages/recordscreen/src').default;
+} else {
+  ZMonitor = require('@zmonitor/core').default;
+  performance = require('@zmonitor/performance').default;
+  recordscreen = require('@zmonitor/recordscreen').default;
+}
 
 Vue.use(ZMonitor, {
   dsn: 'http://localhost:8080/reportData',

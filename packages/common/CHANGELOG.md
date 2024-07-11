@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 4.0.0
+
+### Major Changes
+
+- test
+
 ## 3.0.0
 
 ### Major Changes

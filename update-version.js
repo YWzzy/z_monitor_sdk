@@ -19,7 +19,7 @@ function getFormattedTimestamp() {
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
-  return `${year}/${month}/${day}-${hours}:${minutes}:${seconds}`;
+  return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
 }
 
 // 创建一个新的变更集文件
@@ -28,7 +28,7 @@ function createChangeset(type) {
   const changesetFile = path.resolve(changesetDir, `${timestamp}-update.md`);
 
   const changesetContent = `---
-"your-package-name": ${type}
+"your-package-name": "${type}"
 ---
 
 Update description here.
@@ -38,11 +38,7 @@ Update description here.
   console.log(`Created changeset file: ${changesetFile}`);
 }
 
-const type = process.argv[2]; // 'major', 'minor', or 'patch'
-if (!['major', 'minor', 'patch'].includes(type)) {
-  console.error('Please provide a valid version type: major, minor, or patch');
-  process.exit(1);
-}
+const type = 'minor'; // 只更新次版本号
 
 createChangeset(type);
 
@@ -51,5 +47,6 @@ try {
   execSync('pnpm changeset version', { stdio: 'inherit' });
 } catch (error) {
   console.error('Error executing changeset version:', error);
+  console.error(error.message);
   process.exit(1);
 }

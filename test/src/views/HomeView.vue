@@ -248,8 +248,15 @@ export default {
     xhrError() {
       let _this = this;
       let ajax = new XMLHttpRequest();
-      ajax.open('GET', 'https://abc.com/test/api');
+      ajax.open('POST', 'https://abc.com/test/api?a=1&b=2');
+      ajax.setRequestHeader('Accept', '*/*');
       ajax.setRequestHeader('content-type', 'application/json');
+      ajax.setRequestHeader('Authorization', 'Bearer YourAuthToken');
+      ajax.setRequestHeader('X-Custom-Header', 'Value');
+      let data = {
+        key1: 'value1',
+        key2: 'value2',
+      };
       ajax.onreadystatechange = function () {
         if (ajax.readyState == 4) {
           _this.getTableData();
@@ -258,7 +265,7 @@ export default {
           console.log('ajax', ajax);
         }
       };
-      ajax.send();
+      ajax.send(JSON.stringify(data));
       ajax.addEventListener('loadend', () => {});
     },
   },

@@ -59,6 +59,7 @@ function xhrReplace(): void {
   if (!('XMLHttpRequest' in _global)) {
     return;
   }
+  let headers_gobal: any = {};
   // 获取XMLHttpRequest的原型对象
   const originalXhrProto = XMLHttpRequest.prototype;
   replaceAop(originalXhrProto, 'open', (originalOpen: voidFun) => {
@@ -70,6 +71,17 @@ function xhrReplace(): void {
         type: HTTPTYPE.XHR,
       };
       originalOpen.apply(this, args);
+    };
+  });
+  replaceAop(originalXhrProto, 'setRequestHeader', (originalSetRequestHeader: voidFun) => {
+    return function (this: any, ...args: any[]): void {
+      this.zmonitor_xhr = Object.assign({}, this.zmonitor_xhr, {
+        headers: headers_gobal,
+      });
+
+      const [key, value] = args;
+      if (key) headers_gobal[key] = value;
+      originalSetRequestHeader.apply(this, args);
     };
   });
   replaceAop(originalXhrProto, 'send', (originalSend: voidFun) => {

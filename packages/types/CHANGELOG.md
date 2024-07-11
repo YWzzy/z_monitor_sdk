@@ -1,5 +1,16 @@
 # @zmonitor/types
 
+## 4.0.0
+
+### Major Changes
+
+- test
+
+### Patch Changes
+
+- Updated dependencies
+  - @zmonitor/common@4.0.0
+
 ## 3.0.0
 
 ### Major Changes

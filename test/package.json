@@ -1,18 +1,19 @@
 {
-  "name": "web-see-demo",
+  "name": "z-test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "concurrently  \"npm run serve\" \"npm run service\"",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode dev",
+    "local": "vue-cli-service serve --mode local",
     "service": "nodemon ./server.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@zmonitor/core": "^3.0.0",
-    "@zmonitor/performance": "^2.0.0",
-    "@zmonitor/recordscreen": "^2.0.0",
+    "@zmonitor/core": ">=4.0.0 <5.0.0",
+    "@zmonitor/performance": ">=4.0.0 <5.0.0",
+    "@zmonitor/recordscreen": ">=4.0.0 <5.0.0",
     "@zyf2e/monitor-web-performance": "^2.1.54",
     "body-parser": "^1.20.1",
     "co-body": "^6.1.0",
