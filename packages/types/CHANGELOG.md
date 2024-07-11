@@ -1,5 +1,18 @@
 # @zmonitor/types
 
+## 5.0.0
+
+### Major Changes
+
+- e0cb626: 测试
+
+### Patch Changes
+
+- fix 请求成功时请求信息缺失的问题
+- Updated dependencies [e0cb626]
+- Updated dependencies
+  - @zmonitor/common@5.0.0
+
 ## 4.0.0
 
 ### Major Changes
