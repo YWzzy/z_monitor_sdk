@@ -21,12 +21,7 @@ const HandleEvents = {
   // 处理xhr、fetch回调
   handleHttp(data: HttpData, type: EVENTTYPES): void {
     try {
-      console.log('====================================');
-      console.log('handleHttp data', data);
-
       const result = httpTransform(data);
-      console.log('result', result);
-      console.log('====================================');
       // 添加用户行为，去掉自身上报的接口行为
       if (!data.url.includes(options.dsn)) {
         breadcrumb.push({
