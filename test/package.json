@@ -11,9 +11,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@zmonitor/core": ">=4.0.0 <5.0.0",
-    "@zmonitor/performance": ">=4.0.0 <5.0.0",
-    "@zmonitor/recordscreen": ">=4.0.0 <5.0.0",
+    "@zmonitor/core": ">=5.0.0 <6.0.0",
+    "@zmonitor/performance": ">=5.0.0 <6.0.0",
+    "@zmonitor/recordscreen": ">=5.0.0 <6.0.0",
     "@zyf2e/monitor-web-performance": "^2.1.54",
     "body-parser": "^1.20.1",
     "co-body": "^6.1.0",

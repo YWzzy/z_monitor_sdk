@@ -1,5 +1,12 @@
 # @zmonitor/utils
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @zmonitor/core@5.1.0
+
 ## 5.0.0
 
 ### Major Changes
