@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 5.1.0
+
+### Minor Changes
+
+- 修复捕获请求参数缺失问题
+
 ## 5.0.0
 
 ### Major Changes

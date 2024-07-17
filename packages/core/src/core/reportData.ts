@@ -24,6 +24,7 @@ export class TransportData {
   beforeDataReport: any; // 上报数据前的hook
   getUserId: any; // 用户自定义获取userId的方法
   useImgUpload = false; // 是否使用图片打点上报
+  reportErrorsOnly = true; // 是否只上报错误
   constructor() {
     this.uuid = generateUUID(); // 每次页面加载的唯一标识
   }
@@ -126,9 +127,12 @@ export class TransportData {
 
   // 绑定初始化选项
   bindOptions(options: InitOptions): void {
-    const { dsn, appId, beforeDataReport, userId, getUserId, useImgUpload } = options;
+    const { dsn, appId, reportErrorsOnly, beforeDataReport, userId, getUserId, useImgUpload } =
+      options;
     validateOption(appId, 'appId', 'string') && (this.appId = appId);
     validateOption(dsn, 'dsn', 'string') && (this.errorDsn = dsn);
+    validateOption(reportErrorsOnly, 'reportErrorsOnly', 'boolean') &&
+      (this.reportErrorsOnly = reportErrorsOnly || true);
     validateOption(userId, 'userId', 'string') && (this.userId = userId || '');
     validateOption(useImgUpload, 'useImgUpload', 'boolean') &&
       (this.useImgUpload = useImgUpload || false);
@@ -141,6 +145,10 @@ export class TransportData {
     const dsn = this.errorDsn;
     if (isEmpty(dsn)) {
       console.error('z-monitor: dsn为空，没有传入监控错误上报的dsn地址，请在init中传入');
+      return;
+    }
+    // 只上报错误
+    if (this.reportErrorsOnly && (data.type == EVENTTYPES.FETCH || data.type == EVENTTYPES.XHR)) {
       return;
     }
     // 开启录屏，由@zmonitor/recordScreen 插件控制

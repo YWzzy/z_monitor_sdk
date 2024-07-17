@@ -1,5 +1,16 @@
 # @zmonitor/types
 
+## 5.1.0
+
+### Minor Changes
+
+- 修复捕获请求参数缺失问题
+
+### Patch Changes
+
+- Updated dependencies
+  - @zmonitor/common@5.1.0
+
 ## 5.0.0
 
 ### Major Changes
