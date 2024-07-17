@@ -45,7 +45,6 @@ export class Options {
   }
 }
 const options = _support.options || (_support.options = new Options());
-
 export function handleOptions(paramOptions: InitOptions): void {
   // setSilentFlag 给全局添加已设置的标识，防止重复设置
   setSilentFlag(paramOptions);
