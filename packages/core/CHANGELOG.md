@@ -1,5 +1,15 @@
 # @zmonitor/core
 
+## 5.4.0
+
+### Minor Changes
+
+- 修复 reportErrorsOnly 控制逻辑
+
+### Patch Changes
+
+- @zmonitor/utils@5.2.1
+
 ## 5.3.0
 
 ### Minor Changes

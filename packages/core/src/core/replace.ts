@@ -203,7 +203,6 @@ function listenError(): void {
     _global,
     'error',
     function (e: ErrorEvent) {
-      console.log(e);
       notify(EVENTTYPES.ERROR, e);
     },
     true

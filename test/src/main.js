@@ -23,7 +23,7 @@ Vue.use(ZMonitor, {
   appId: '8749155290628577',
   silentWhiteScreen: false,
   skeletonProject: true,
-  repeatCodeError: true,
+  repeatCodeError: false,
   userId: '897a4042-870f-4a41-8de2-cc85b39fabaf',
   handleHttpStatus(data) {
     function safeStringify(response) {

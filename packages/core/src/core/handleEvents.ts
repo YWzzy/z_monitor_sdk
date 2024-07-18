@@ -20,6 +20,9 @@ import { ErrorTarget, RouteHistory, HttpData } from '@zmonitor/types';
 const HandleEvents = {
   // 处理xhr、fetch回调
   handleHttp(data: HttpData, type: EVENTTYPES): void {
+    console.log('====================================');
+    console.log(data, type);
+    console.log('====================================');
     try {
       const result = httpTransform(data);
       // 添加用户行为，去掉自身上报的接口行为
@@ -72,6 +75,8 @@ const HandleEvents = {
       const hash: string = getErrorUid(
         `${EVENTTYPES.ERROR}-${ev.message}-${fileName}-${columnNumber}`
       );
+      console.log('options.repeatCodeError', options.repeatCodeError);
+      console.log('hashMapExist(hash)', hashMapExist(hash));
       // 开启repeatCodeError第一次报错才上报
       if (!options.repeatCodeError || (options.repeatCodeError && !hashMapExist(hash))) {
         return transportData.send(errorData);
