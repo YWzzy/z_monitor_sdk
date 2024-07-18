@@ -148,7 +148,11 @@ export class TransportData {
       return;
     }
     // 只上报错误
-    if (this.reportErrorsOnly && (data.type == EVENTTYPES.FETCH || data.type == EVENTTYPES.XHR)) {
+    if (
+      this.reportErrorsOnly &&
+      (data.type == EVENTTYPES.FETCH || data.type == EVENTTYPES.XHR) &&
+      data.status === 'ok'
+    ) {
       return;
     }
     // 开启录屏，由@zmonitor/recordScreen 插件控制

@@ -27,7 +27,6 @@
   "dependencies": {
     "@changesets/cli": "^2.27.7",
     "@nestjs/mapped-types": "*",
-    "@zmonitor/core": "workspace:4.0.0",
     "core-js": "^3.37.1",
     "error-stack-parser": "2.1.4",
     "js-base64": "3.7.3",

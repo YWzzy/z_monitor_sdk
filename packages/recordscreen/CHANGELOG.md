@@ -1,5 +1,18 @@
 # @zmonitor/recordscreen
 
+## 5.2.0
+
+### Minor Changes
+
+- test
+
+### Patch Changes
+
+- Updated dependencies
+  - @zmonitor/common@5.2.0
+  - @zmonitor/types@5.2.0
+  - @zmonitor/utils@5.2.0
+
 ## 5.1.0
 
 ### Minor Changes

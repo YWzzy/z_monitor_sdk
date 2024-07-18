@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 5.2.0
+
+### Minor Changes
+
+- test
+
 ## 5.1.0
 
 ### Minor Changes
