@@ -10,6 +10,110 @@ let timer: number;
 let observer: MutationObserver;
 let entries: any[] = [];
 
+let whiteScreenStartTime: number;
+let whiteScreenDetected = false;
+
+// 检查页面是否白屏
+function checkWhiteScreen(callback: Callback) {
+  let emptyPoints = 0;
+  for (let i = 1; i <= 9; i++) {
+    const xElements = document.elementsFromPoint(
+      (_global.innerWidth * i) / 10,
+      _global.innerHeight / 2
+    );
+    const yElements = document.elementsFromPoint(
+      _global.innerWidth / 2,
+      (_global.innerHeight * i) / 10
+    );
+    if (isContainer(xElements[0] as HTMLElement)) emptyPoints++;
+    if (i !== 5 && isContainer(yElements[0] as HTMLElement)) emptyPoints++;
+  }
+
+  if (emptyPoints === 17) {
+    if (!whiteScreenDetected) {
+      whiteScreenStartTime = new Date().getTime();
+      whiteScreenDetected = true;
+    }
+  } else {
+    if (whiteScreenDetected) {
+      const whiteScreenEndTime = new Date().getTime();
+      const whiteScreenDuration = whiteScreenEndTime - whiteScreenStartTime;
+      callback({
+        name: 'WhiteScreen',
+        value: whiteScreenDuration,
+        rating: whiteScreenDuration > 2500 ? 'poor' : 'good',
+      });
+      whiteScreenDetected = false;
+    }
+  }
+}
+
+// 判断是否为容器节点
+function isContainer(element: HTMLElement): boolean {
+  const containerTags = ['DIV', 'SPAN', 'BODY', 'HTML'];
+  return containerTags.includes(element.tagName);
+}
+
+// 开始白屏检测轮询
+function startWhiteScreenDetection(callback: Callback) {
+  const intervalId = setInterval(() => {
+    checkWhiteScreen(callback);
+  }, 1000); // 每秒检查一次
+
+  // 页面加载完成后停止检测
+  on(_global, 'load', () => {
+    clearInterval(intervalId);
+    checkWhiteScreen(callback); // 最后再检查一次
+  });
+}
+
+// 添加getWhiteScreen函数
+export function getWhiteScreen(callback: Callback): void {
+  startWhiteScreenDetection(callback);
+}
+
+export function getDnsTime(callback: Callback): void {
+  const [navigation] = window.performance.getEntriesByType(
+    'navigation'
+  ) as PerformanceNavigationTiming[];
+  let dnsTime = 0;
+  // 处理 Safari 的兼容性问题
+  if (navigation && 'domainLookupStart' in navigation && 'domainLookupEnd' in navigation) {
+    dnsTime = navigation.domainLookupEnd - navigation.domainLookupStart;
+    callback({
+      name: 'dnsTime',
+      value: dnsTime,
+      rating: dnsTime > 1000 ? 'poor' : 'good',
+    });
+  }
+  callback({
+    name: 'dnsTime',
+    value: 0,
+    rating: dnsTime > 1000 ? 'poor' : 'good',
+  });
+}
+
+export function getTcpTime(callback: Callback): void {
+  const [navigation] = window.performance.getEntriesByType(
+    'navigation'
+  ) as PerformanceNavigationTiming[];
+  let tcpTime = 0;
+  // 处理 Safari 的兼容性问题
+  if (navigation && 'connectStart' in navigation && 'connectEnd' in navigation) {
+    tcpTime = navigation.connectEnd - navigation.connectStart;
+    callback({
+      name: 'tcpTime',
+      value: tcpTime,
+      rating: tcpTime > 1000 ? 'poor' : 'good',
+    });
+  }
+  callback({
+    name: 'tcpTime',
+    value: 0,
+    rating: tcpTime > 1000 ? 'poor' : 'good',
+  });
+}
+
 // 定时器循环监听dom的变化，当document.readyState === 'complete'时，停止监听
 function checkDOMChange(callback: Callback) {
   cancelAnimationFrame(timer);
@@ -262,6 +366,14 @@ export function getWebVitals(callback: Callback): void {
     });
   }
 
+  getDnsTime(res => {
+    callback(res);
+  });
+
+  getTcpTime(res => {
+    callback(res);
+  });
+
   // 首屏加载时间
   getFirstScreenPaint(res => {
     const data = {
@@ -270,5 +382,10 @@ export function getWebVitals(callback: Callback): void {
       rating: res > 2500 ? 'poor' : 'good',
     };
     callback(data);
+  });
+
+  // 白屏时间
+  getWhiteScreen(res => {
+    callback(res);
   });
 }

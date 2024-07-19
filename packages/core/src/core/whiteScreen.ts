@@ -4,18 +4,17 @@ import { Callback, InitOptions } from '@zmonitor/types';
 
 /**
  * 检测页面是否白屏
- * @param {function} callback - 回到函数获取检测结果
+ * @param {function} callback - 回调函数获取检测结果
  * @param {boolean} skeletonProject - 页面是否有骨架屏
  * @param {array} whiteBoxElements - 容器列表，默认值为['html', 'body', '#app', '#root']
  */
-
 export function openWhiteScreen(
   callback: Callback,
-  { skeletonProject, whiteBoxElements }: InitOptions
+  { skeletonProject, whiteBoxElements = ['html', 'body', '#app', '#root'] }: InitOptions
 ) {
   let _whiteLoopNum = 0;
-  const _skeletonInitList: any = []; // 存储初次采样点
-  let _skeletonNowList: any = []; // 存储当前采样点
+  const _skeletonInitList: string[] = []; // 存储初次采样点
+  let _skeletonNowList: string[] = []; // 存储当前采样点
 
   // 项目有骨架屏
   if (skeletonProject) {
@@ -31,33 +30,29 @@ export function openWhiteScreen(
     }
   }
 
-  // 选中dom点的名称
-  function getSelector(element: any) {
+  function getSelector(element: HTMLElement): string {
     if (element.id) {
       return '#' + element.id;
     } else if (element.className) {
-      // div home => div.home
-      return (
-        '.' +
-        element.className
-          .split(' ')
-          .filter((item: any) => !!item)
-          .join('.')
-      );
+      return '.' + element.className.split(' ').filter(Boolean).join('.');
     } else {
       return element.nodeName.toLowerCase();
     }
   }
-  // 判断采样点是否为容器节点
-  function isContainer(element: HTMLElement) {
+
+  function isContainer(element: HTMLElement): boolean {
     const selector = getSelector(element);
     if (skeletonProject) {
-      _whiteLoopNum ? _skeletonNowList.push(selector) : _skeletonInitList.push(selector);
+      if (_whiteLoopNum) {
+        _skeletonNowList.push(selector);
+      } else {
+        _skeletonInitList.push(selector);
+      }
     }
-    return whiteBoxElements?.indexOf(selector) != -1;
+    return whiteBoxElements.indexOf(selector) !== -1;
   }
-  // 采样对比
-  function sampling() {
+
+  function sampling(): void {
     let emptyPoints = 0;
     for (let i = 1; i <= 9; i++) {
       const xElements = document.elementsFromPoint(
@@ -68,41 +63,38 @@ export function openWhiteScreen(
         _global.innerWidth / 2,
         (_global.innerHeight * i) / 10
       );
-      if (isContainer(xElements[0] as HTMLElement)) emptyPoints++;
-      // 中心点只计算一次
-      if (i != 5) {
-        if (isContainer(yElements[0] as HTMLElement)) emptyPoints++;
-      }
+      if (xElements[0] && isContainer(xElements[0] as HTMLElement)) emptyPoints++;
+      if (i !== 5 && yElements[0] && isContainer(yElements[0] as HTMLElement)) emptyPoints++;
     }
-    // console.log('_skeletonInitList', _skeletonInitList, _skeletonNowList);
 
-    // 页面正常渲染，停止轮训
-    if (emptyPoints != 17) {
+    // 页面正常渲染，停止轮询
+    if (emptyPoints !== 17) {
       if (skeletonProject) {
-        // 第一次不比较
-        if (!_whiteLoopNum) return openWhiteLoop();
-        // 比较前后dom是否一致
-        if (_skeletonNowList.join() == _skeletonInitList.join())
+        if (!_whiteLoopNum) {
+          return openWhiteLoop();
+        }
+        if (_skeletonNowList.join() === _skeletonInitList.join()) {
           return callback({
             status: STATUS_CODE.ERROR,
           });
+        }
       }
       if (_support._loopTimer) {
-        clearTimeout(_support._loopTimer);
+        clearInterval(_support._loopTimer);
         _support._loopTimer = null;
       }
     } else {
-      // 开启轮训
+      // 开启轮询
       if (!_support._loopTimer) {
         openWhiteLoop();
       }
     }
     // 17个点都是容器节点算作白屏
     callback({
-      status: emptyPoints == 17 ? STATUS_CODE.ERROR : STATUS_CODE.OK,
+      status: emptyPoints === 17 ? STATUS_CODE.ERROR : STATUS_CODE.OK,
     });
   }
-  // 开启白屏轮训
+
   function openWhiteLoop(): void {
     if (_support._loopTimer) return;
     _support._loopTimer = setInterval(() => {
@@ -113,10 +105,10 @@ export function openWhiteScreen(
       idleCallback();
     }, 1000);
   }
-  function idleCallback() {
+
+  function idleCallback(): void {
     if ('requestIdleCallback' in _global) {
-      requestIdleCallback(deadline => {
-        // timeRemaining：表示当前空闲时间的剩余时间
+      requestIdleCallback((deadline: any) => {
         if (deadline.timeRemaining() > 0) {
           sampling();
         }
