@@ -39,7 +39,7 @@ function checkWhiteScreen(callback: Callback) {
       const whiteScreenEndTime = new Date().getTime();
       const whiteScreenDuration = whiteScreenEndTime - whiteScreenStartTime;
       callback({
-        name: 'WhiteScreen',
+        name: 'whiteTime',
         value: whiteScreenDuration,
         rating: whiteScreenDuration > 2500 ? 'poor' : 'good',
       });
@@ -73,7 +73,7 @@ export function getWhiteScreen(callback: Callback): void {
 }
 
 export function getDnsTime(callback: Callback): void {
-  const [navigation] = window.performance.getEntriesByType(
+  const [navigation] = _global.performance.getEntriesByType(
     'navigation'
   ) as PerformanceNavigationTiming[];
   let dnsTime = 0;
@@ -94,7 +94,7 @@ export function getDnsTime(callback: Callback): void {
 }
 
 export function getTcpTime(callback: Callback): void {
-  const [navigation] = window.performance.getEntriesByType(
+  const [navigation] = _global.performance.getEntriesByType(
     'navigation'
   ) as PerformanceNavigationTiming[];
   let tcpTime = 0;

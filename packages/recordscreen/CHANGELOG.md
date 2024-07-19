@@ -1,5 +1,11 @@
 # @zmonitor/recordscreen
 
+## 5.2.2
+
+### Patch Changes
+
+- @zmonitor/utils@5.2.2
+
 ## 5.2.1
 
 ### Patch Changes

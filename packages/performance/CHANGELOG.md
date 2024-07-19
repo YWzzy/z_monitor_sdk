@@ -1,5 +1,15 @@
 # @zmonitor/performance
 
+## 5.3.0
+
+### Minor Changes
+
+- 支持性能上报白屏时间，dns 时间和 tcp 连接时间
+
+### Patch Changes
+
+- @zmonitor/utils@5.2.2
+
 ## 5.2.1
 
 ### Patch Changes

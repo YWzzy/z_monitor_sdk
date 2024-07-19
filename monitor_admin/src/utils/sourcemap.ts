@@ -25,10 +25,9 @@ export default class SourceMapUtils {
     return res && Array.isArray(res) ? res[1] : null;
   }
 
-  static async loadSourceMap(appId: string,fileName: string): Promise<string | null> {
+  static async loadSourceMap(appId: string, fileName: string): Promise<string | null> {
     const file = fileName;
-    // const env = process.env.NODE_ENV;
-    const env = 'production';
+    const env = import.meta.env.VITE_ENV;
 
     // if (env === 'development') {
     //   file = this.getFileLink(fileName);
@@ -40,14 +39,16 @@ export default class SourceMapUtils {
 
     try {
       const response = await fetch(
-        `http://localhost:8083/monitor/getmap?fileName=${file}&env=${env}`
+        `${import.meta.env.VITE_API_HOST}/monitor/getmap?fileName=${file}&env=${env}&appId=${appId}`
       );
+      console.log('response', response);
+
       return await response.json();
-      //   if (env == 'development') {
-      //     return await response.text();
-      //   } else {
-      //     return await response.json();
-      //   }
+      // if (env == 'development') {
+      //   return await response.text();
+      // } else {
+      //   return await response.json();
+      // }
     } catch (error) {
       console.error('加载源码映射失败:', error);
       throw new Error(error);
@@ -72,9 +73,9 @@ export default class SourceMapUtils {
     let result: CodeDetail;
     let codeList: string[];
 
-    // if (process.env.NODE_ENV === 'development') {
-    if (process.env.NODE_ENV !== 'development') {
+    if (import.meta.env.VITE_ENV == 'development') {
       const source = this.getFileLink(fileName);
+
       let isStart = false;
       result = {
         source,
@@ -96,6 +97,9 @@ export default class SourceMapUtils {
         line: Number(line),
         column: Number(column),
       });
+      console.log('====================================');
+      console.log('result', result);
+      console.log('====================================');
 
       if (result.source && result.source.includes('node_modules')) {
         return message.error(`源码解析失败: 因为报错来自三方依赖，报错文件为 ${result.source}`);

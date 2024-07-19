@@ -9,6 +9,10 @@ import zMonitor from '../../packages/core/src';
 import performance from '../../packages/performance/src';
 import recordscreen from '../../packages/recordscreen/src';
 
+// import zMonitor from '@zmonitor/core';
+// import performance from '@zmonitor/performance';
+// import recordscreen from '@zmonitor/recordscreen';
+
 const dsn = import.meta.env.VITE_ZMONITOR_DSN;
 
 zMonitor.init({
