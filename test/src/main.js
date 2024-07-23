@@ -47,7 +47,7 @@ Vue.use(ZMonitor, {
   },
 });
 ZMonitor.use(performance);
-ZMonitor.use(recordscreen, { recordScreentime: 15 });
+ZMonitor.use(recordscreen, { recordScreenTime: 15 });
 
 Vue.use(ElementUI, { size: 'mini' });
 Vue.config.productionTip = false;

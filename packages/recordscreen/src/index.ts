@@ -5,7 +5,7 @@ import { validateOption, generateUUID, _support } from '@zmonitor/utils';
 
 export default class RecordScreen extends BasePlugin {
   type: string;
-  recordScreentime = 10; // 默认录屏时长
+  recordScreenTime = 10; // 默认录屏时长
   recordScreenTypeList: string[] = [
     EVENTTYPES.ERROR,
     EVENTTYPES.UNHANDLEDREJECTION,
@@ -19,9 +19,9 @@ export default class RecordScreen extends BasePlugin {
     this.bindOptions(params);
   }
   bindOptions(params: RecordScreenOption) {
-    const { recordScreenTypeList, recordScreentime } = params;
-    validateOption(recordScreentime, 'recordScreentime', 'number') &&
-      (this.recordScreentime = recordScreentime);
+    const { recordScreenTypeList, recordScreenTime } = params;
+    validateOption(recordScreenTime, 'recordScreenTime', 'number') &&
+      (this.recordScreenTime = recordScreenTime);
     validateOption(recordScreenTypeList, 'recordScreenTypeList', 'array') &&
       (this.recordScreenTypeList = recordScreenTypeList);
   }
@@ -31,7 +31,7 @@ export default class RecordScreen extends BasePlugin {
     options.recordScreenTypeList = this.recordScreenTypeList;
     // 添加初始的recordScreenId
     _support.recordScreenId = generateUUID();
-    handleScreen(transportData, this.recordScreentime);
+    handleScreen(transportData, this.recordScreenTime);
   }
   transform() {}
 }

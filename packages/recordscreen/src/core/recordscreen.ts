@@ -4,7 +4,7 @@ import { Base64 } from 'js-base64';
 import { getTimestamp, generateUUID, _support } from '@zmonitor/utils';
 import { EVENTTYPES, STATUS_CODE } from '@zmonitor/common';
 
-export function handleScreen(transportData: any, recordScreentime: number): void {
+export function handleScreen(transportData: any, recordScreenTime: number): void {
   // events存储录屏信息
   let events: any[] = [];
   // 调用stopFn停止录像
@@ -35,7 +35,7 @@ export function handleScreen(transportData: any, recordScreentime: number): void
     },
     recordCanvas: true,
     // 默认每10s重新制作快照
-    checkoutEveryNms: 1000 * recordScreentime,
+    checkoutEveryNms: 1000 * recordScreenTime,
   });
 }
 // 压缩

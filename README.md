@@ -65,7 +65,7 @@ Vue.use(zMonitor, {
 // 注册性能检测插件
 zMonitor.use(performance);
 // 注册页面录屏插件，设置单次录屏时长为20s，默认是10s
-zMonitor.use(recordscreen, { recordScreentime: 20 });
+zMonitor.use(recordscreen, { recordScreenTime: 20 });
 ```
 
 ## Vue3 安装说明
@@ -170,7 +170,7 @@ class ErrorBoundary extends React.Component {
 
 |          Name          | Type     | Default                                                       | Description                                                                                                               |
 | :--------------------: | -------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-|   `recordScreentime`   | `number` | `10`                                                          | 单次录屏时长，默认值为 10s                                                                                                |
+|   `recordScreenTime`   | `number` | `10`                                                          | 单次录屏时长，默认值为 10s                                                                                                |
 | `recordScreenTypeList` | `array`  | `['error', 'unhandledrejection', 'resource', 'fetch', 'xhr']` | 上报录屏的错误列表，默认会上报所有错误发生时的录屏信息，如设置 ['error', 'unhandledrejection'] 则只会上报代码报错时的录屏 |
 
 ## z-monitor 前端监控文章

@@ -5,6 +5,10 @@ export interface InitOptions {
   appId: string; // 项目id
   userId?: string; // 用户id
   disabled?: boolean; // 是否禁用SDK
+  projectEnv?: string; // 环境
+  projectIp?: string; // ip标识
+  projectVersion?: string; // 版本号
+  isSourceMap?: boolean; // 是否上传sourcemap
   silentXhr?: boolean; // 是否监控 xhr 请求
   silentFetch?: boolean; // 是否监控 fetch 请求
   silentClick?: boolean; // 是否监控 click 事件
@@ -14,9 +18,10 @@ export interface InitOptions {
   silentHistory?: boolean; // 是否监听路由 history模式变化
   silentPerformance?: boolean; // 是否获取页面性能指标
   silentRecordScreen?: boolean; // 是否开启录屏
-  recordScreentime?: number; // 单次录屏时长
+  recordScreenTime?: number; // 单次录屏时长
   recordScreenTypeList?: string[]; // 上报录屏的错误列表
   reportErrorsOnly?: boolean; // 是否只上报错误
+  repeatCodeError?: boolean; // 是否去除重复的代码错误，重复的错误只上报一次
   silentWhiteScreen?: boolean; // 是否开启白屏检测
   skeletonProject?: boolean; // 白屏检测的项目是否有骨架屏
   whiteBoxElements?: string[]; // 白屏检测的容器列表
@@ -28,12 +33,17 @@ export interface InitOptions {
   beforePushBreadcrumb?(data: BreadcrumbData): BreadcrumbData; // 添加到行为列表前的 hook
   beforeDataReport?(data: ReportData): Promise<ReportData | boolean>; // 数据上报前的 hook
   getUserId?: () => string | number; // 用户定义的
+  getProjectConfig?: () => {
+    projectEnv: string;
+    projectVersion: string;
+    projectIp: string;
+    isSourceMap: boolean;
+  }; // 获取项目配置
   handleHttpStatus?: (data: any) => boolean; // 处理接口返回的 response
-  repeatCodeError?: boolean; // 是否去除重复的代码错误，重复的错误只上报一次
 }
 
 // 录屏插件参数
 export interface RecordScreenOption {
   recordScreenTypeList: string[];
-  recordScreentime: number;
+  recordScreenTime: number;
 }

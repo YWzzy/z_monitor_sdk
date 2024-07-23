@@ -1,5 +1,11 @@
 # @zmonitor/performance
 
+## 5.3.1
+
+### Patch Changes
+
+- 白屏检测字段变更
+
 ## 5.3.0
 
 ### Minor Changes

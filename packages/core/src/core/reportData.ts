@@ -20,9 +20,19 @@ export class TransportData {
   appId = ''; // 每个项目对应的唯一标识
   errorDsn = ''; // 监控上报接口的地址
   userId = ''; // 用户id
+  projectEnv = ''; // 项目环境
+  projectVersion = ''; // 项目版本
+  projectIp = ''; // 项目ip
+  isSourceMap = false; // 是否上传sourcemap
   uuid: string; // 每次页面加载的唯一标识
   beforeDataReport: any; // 上报数据前的hook
   getUserId: any; // 用户自定义获取userId的方法
+  getProjectConfig?: () => {
+    projectEnv: string;
+    projectVersion: string;
+    projectIp: string;
+    isSourceMap: boolean;
+  }; // 获取项目配置 // 获取项目配置
   useImgUpload = false; // 是否使用图片打点上报
   reportErrorsOnly = true; // 是否只上报错误
   constructor() {
@@ -79,6 +89,19 @@ export class TransportData {
     };
   }
 
+  // 获取项目配置
+  getProjectConfigInfo() {
+    if (typeof this.getProjectConfig === 'function') {
+      return this.getProjectConfig();
+    }
+    return {
+      projectEnv: this.projectEnv,
+      projectVersion: this.projectVersion,
+      projectIp: this.projectIp,
+      isSourceMap: this.isSourceMap,
+    };
+  }
+
   // 获取用户id
   getAuthId(): string | number {
     if (typeof this.getUserId === 'function') {
@@ -98,6 +121,7 @@ export class TransportData {
     const info = {
       ...data,
       ...this.getAuthInfo(), // 获取用户信息
+      ...this.getProjectConfigInfo(), // 获取项目配置
       uuid: this.uuid,
       pageUrl: getLocationHref(),
       deviceInfo: _support.deviceInfo, // 获取设备信息
@@ -127,8 +151,16 @@ export class TransportData {
 
   // 绑定初始化选项
   bindOptions(options: InitOptions): void {
-    const { dsn, appId, reportErrorsOnly, beforeDataReport, userId, getUserId, useImgUpload } =
-      options;
+    const {
+      dsn,
+      appId,
+      reportErrorsOnly,
+      beforeDataReport,
+      userId,
+      getUserId,
+      useImgUpload,
+      getProjectConfig,
+    } = options;
     validateOption(appId, 'appId', 'string') && (this.appId = appId);
     validateOption(dsn, 'dsn', 'string') && (this.errorDsn = dsn);
     validateOption(reportErrorsOnly, 'reportErrorsOnly', 'boolean') &&
@@ -139,6 +171,8 @@ export class TransportData {
     validateOption(beforeDataReport, 'beforeDataReport', 'function') &&
       (this.beforeDataReport = beforeDataReport);
     validateOption(getUserId, 'getUserId', 'function') && (this.getUserId = getUserId);
+    validateOption(getProjectConfig, 'getProjectConfig', 'function') &&
+      (this.getProjectConfig = getProjectConfig);
   }
   // 上报数据
   async send(data: ReportData) {
@@ -164,6 +198,7 @@ export class TransportData {
       }
     }
     const result = (await this.beforePost(data)) as ReportData;
+
     if (isBrowserEnv && result) {
       // 优先使用sendBeacon 上报，若数据量大，再使用图片打点上报和fetch上报
       const value = this.beacon(dsn, result);

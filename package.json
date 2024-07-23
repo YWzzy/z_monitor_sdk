@@ -7,7 +7,6 @@
     "prepare": "husky install",
     "commit": "git-cz",
     "changeset": "changeset",
-    "version": "node update-version.js minor",
     "version-packages": "changeset version",
     "publish": "changeset publish --access public --registry=https://registry.npmjs.com/",
     "release": "npm run build && npm publish --access public",
