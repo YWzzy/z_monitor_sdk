@@ -17,9 +17,12 @@ const dsn = import.meta.env.VITE_ZMONITOR_DSN;
 zMonitor.init({
   dsn,
   appId: import.meta.env.VITE_APPID,
+  appSecret: import.meta.env.VITE_APPSECRET,
+  appSecretKey: import.meta.env.VITE_APPSECRET_KEY,
   silentWhiteScreen: true,
   skeletonProject: true,
   repeatCodeError: false,
+  reportErrorsOnly: false,
   userId: '88888888',
   getProjectConfig: () => {
     return {

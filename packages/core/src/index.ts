@@ -9,7 +9,7 @@ import {
   setupReplace,
   HandleEvents,
 } from './core/index';
-import { _global, getFlag, setFlag, nativeTryCatch } from '@zmonitor/utils';
+import { _global, getFlag, setFlag, nativeTryCatch, validateAppIdAndSecret } from '@zmonitor/utils';
 import { SDK_VERSION, SDK_NAME, EVENTTYPES } from '@zmonitor/common';
 import { InitOptions, VueInstance, ViewModel } from '@zmonitor/types';
 
@@ -18,6 +18,16 @@ function init(options: InitOptions) {
     return console.error(`z-monitor 缺少必须配置项：${!options.dsn ? 'dsn' : 'appId'} `);
   }
   if (!('fetch' in _global) || options.disabled) return;
+  if (!options.appSecret || !options.appSecretKey) {
+    return console.error(
+      `z-monitor 缺少必须配置项：${!options.appSecret ? 'appSecret' : 'appSecretKey'} `
+    );
+  }
+  if (!validateAppIdAndSecret(options.appId, options.appSecret, options.appSecretKey)) {
+    return console.error(
+      `z-monitor 配置项错误：appSecretKey不匹配，请检查appSecret和appSecretKey是否正确`
+    );
+  }
   // 初始化配置
   handleOptions(options);
   // 初始化重写事件

@@ -3,6 +3,8 @@ import { ReportData, BreadcrumbData } from './base';
 export interface InitOptions {
   dsn: string; // 上报的地址
   appId: string; // 项目id
+  appSecret: string; // 项目密钥
+  appSecretKey: string; // 生成项目密钥key
   userId?: string; // 用户id
   disabled?: boolean; // 是否禁用SDK
   projectEnv?: string; // 环境

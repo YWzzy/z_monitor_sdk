@@ -1,5 +1,15 @@
 # @zmonitor/core
 
+## 5.5.1
+
+### Patch Changes
+
+- 新增版本以及环境控制
+- Updated dependencies
+  - @zmonitor/common@5.2.1
+  - @zmonitor/types@5.2.1
+  - @zmonitor/utils@5.2.3
+
 ## 5.5.0
 
 ### Minor Changes

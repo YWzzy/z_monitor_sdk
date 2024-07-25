@@ -18,6 +18,8 @@ import { options } from './options';
 export class TransportData {
   queue: Queue = new Queue(); // 消息队列
   appId = ''; // 每个项目对应的唯一标识
+  appSecret = ''; // 项目密钥
+  appSecretKey = ''; // 生成项目密钥key
   errorDsn = ''; // 监控上报接口的地址
   userId = ''; // 用户id
   projectEnv = ''; // 项目环境
@@ -178,7 +180,9 @@ export class TransportData {
   async send(data: ReportData) {
     const dsn = this.errorDsn;
     if (isEmpty(dsn)) {
-      console.error('z-monitor: dsn为空，没有传入监控错误上报的dsn地址，请在init中传入');
+      console.error(
+        'z-monitor: 初始化失败或者dsn为空，请检查配置项和传入上报的dsn地址'
+      );
       return;
     }
     // 只上报错误

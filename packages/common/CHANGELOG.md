@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 5.2.1
+
+### Patch Changes
+
+- 新增版本以及环境控制
+
 ## 5.2.0
 
 ### Minor Changes

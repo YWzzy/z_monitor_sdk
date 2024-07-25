@@ -26,7 +26,9 @@
   "dependencies": {
     "@changesets/cli": "^2.27.7",
     "@nestjs/mapped-types": "*",
+    "@types/node": "^20.14.12",
     "core-js": "^3.37.1",
+    "crypto-js": "^4.2.0",
     "error-stack-parser": "2.1.4",
     "js-base64": "3.7.3",
     "pako": "2.1.0",
@@ -42,6 +44,7 @@
     "@rollup/plugin-commonjs": "^23.0.7",
     "@rollup/plugin-json": "^5.0.2",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/crypto-js": "^4.2.2",
     "@types/pako": "^2.0.3",
     "@types/ua-parser-js": "^0.7.39",
     "@typescript-eslint/eslint-plugin": "^5.62.0",

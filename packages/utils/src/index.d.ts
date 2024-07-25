@@ -5,3 +5,4 @@ export * from './core/verifyType';
 export * from './core/global';
 export * from './core/queue';
 export * from './core/httpStatus';
+export * from './core/validateAppIdAndSecret';
