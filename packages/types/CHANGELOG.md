@@ -1,5 +1,13 @@
 # @zmonitor/types
 
+## 5.2.2
+
+### Patch Changes
+
+- 新增应用合法性校验逻辑
+- Updated dependencies
+  - @zmonitor/common@5.2.2
+
 ## 5.2.1
 
 ### Patch Changes

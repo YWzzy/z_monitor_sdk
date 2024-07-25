@@ -1,5 +1,15 @@
 # @zmonitor/recordscreen
 
+## 5.2.4
+
+### Patch Changes
+
+- 新增应用合法性校验逻辑
+- Updated dependencies
+  - @zmonitor/common@5.2.2
+  - @zmonitor/types@5.2.2
+  - @zmonitor/utils@5.2.4
+
 ## 5.2.3
 
 ### Patch Changes

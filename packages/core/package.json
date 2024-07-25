@@ -1,7 +1,7 @@
 {
   "name": "@zmonitor/core",
   "private": false,
-  "version": "5.5.1",
+  "version": "5.5.2",
   "description": "",
   "main": "src/index.ts",
   "module": "dist/index.esm.js",

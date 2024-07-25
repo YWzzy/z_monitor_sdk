@@ -1,5 +1,11 @@
 # @zmonitor/common
 
+## 5.2.2
+
+### Patch Changes
+
+- 新增应用合法性校验逻辑
+
 ## 5.2.1
 
 ### Patch Changes
